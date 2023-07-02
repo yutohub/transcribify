@@ -42,7 +42,7 @@ function onPlayerReady(event) {
 
 // 字幕ファイルの存在確認
 function checkSubtitleFile(videoId) {
-    const subtitleUrl = `subtitles/${videoId}.json`;
+    const subtitleUrl = `https://github.com/yutohub/transcribify/blob/main/subtitles/${videoId}.json`;
     fetch(subtitleUrl)
       .then(response => {
         if (response.ok) {
@@ -113,7 +113,7 @@ function getVideoIdFromUrl(url) {
 
 // TSVファイルを読み込む
 async function fetchData(videoId) {
-    const data = await fetch("subtitles" + "/" + videoId + ".json");
+    const data = await fetch("https://github.com/yutohub/transcribify/blob/main/subtitles/" + videoId + ".json");
     subtitles = await data.json();
   }
 
