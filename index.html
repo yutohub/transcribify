@@ -15,9 +15,11 @@
       <div class="flex items-center">
         <!-- Logo -->
         <img src="images/logo.png" alt="Logo" class="h-12 px-2" />
-        <a href="#" class="text-white font-bold text-lg pr-2">Transcribify</a>
-        <!-- Menu -->
-        <nav class="ml-6">
+        <div class="hidden md:block">
+          <a href="#" class="text-white font-bold text-lg pr-2">Transcribify</a>
+        </div>
+        <!-- Menu (hidden on mobile) -->
+        <nav class="hidden md:block ml-6">
           <ul class="flex space-x-4">
             <li><a href="#usage" class="text-gray-400 hover:text-white whitespace-nowrap">使い方</a></li>
             <li><a href="#recommendation" class="text-gray-400 hover:text-white whitespace-nowrap">おすすめ</a></li>
@@ -40,13 +42,13 @@
   </div>
   <!-- Video Player -->
   <div class="flex justify-center mt-5">
-    <div class="shadow-lg bg-black" style="width: 720px; height: 480px;">
-      <div id="player"></div>
+    <div class="shadow-lg bg-black md:w-[720px] md:h-[480px] w-[375px] h-[250px]">
+      <div id="player" class="w-full h-full"></div>
     </div>
   </div>
   <div class="flex justify-center">
     <div class="py-2 px-3" style="width: 720px; height: 140px;">
-      <div id="subtitle" class="text-gray-200">
+      <div id="subtitle" class="text-gray-200 md:text-base text-xs">
         こちらサイトはデモであり、字幕の精度は保証されません。
       </div>
     </div>
@@ -62,11 +64,11 @@
   <!-- Usage -->
   <section id="usage" class="bg-gray-900 py-8">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-white mb-4">使い方</h2>
-      <div class="max-w-3xl mx-auto">
+      <h2 class="md:text-3xl text-xl font-bold text-white mb-4">使い方</h2>
+      <div class="max-w-3xl mx-auto md:text-base text-xs">
         <p class="text-gray-400 leading-loose">英語の動画（YouTube）に日本語字幕を付けるサービスです。AIを用いて音声認識、自然言語処理、機械翻訳などを行い生成した、高精度な翻訳字幕を利用することができます。</p>
         <ol class="text-left text-gray-300 mt-4 space-y-2">
-          <li><span class="font-bold">ステップ１：動画のURLをコピー（例: https://www.youtube.com/watch?v=Rty_HFuyG4I）</span></li>
+          <li><span class="font-bold ">ステップ１：動画のURLをコピー（例: https://www.youtube.com/watch?v=Rty_HFuyG4I）</span></li>
           <li><span class="font-bold">ステップ２：右上の入力欄にURLを貼り付けて、検索ボタンをクリック</span></li>
           <li><span class="font-bold">ステップ３：動画が表示されたら、「再生」ボタンをクリック</span></li>
         </ol>
@@ -80,8 +82,8 @@
   </section>  
   <!-- Recommendation -->
   <section id="recommendation" class="bg-gray-700 py-8">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-white mb-4">おすすめ</h2>
+    <div class="container mx-auto text-center md:text-base text-xs">
+      <h2 class="md:text-3xl text-xl font-bold text-white mb-4">おすすめ</h2>
       <div calss="leading-loose text-gray-300">
         <p class="text-gray-400">以下は、おすすめの動画一覧です。こちらの動画は、日本語字幕を利用することができます。</p>
         <p class="text-gray-300 font-bold ">サムネイルをクリックすることで、動画のURLをコピーすることができます</p>
@@ -94,7 +96,7 @@
   <!-- Request -->
   <section id="request" class="bg-gray-900 py-8">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-white mb-4">リクエスト</h2>
+      <h2 class="md:text-3xl text-xl font-bold text-white mb-4">リクエスト</h2>
     </div>
     <div class="flex justify-center py-8">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScF36QNxXoe0Ib6ivmLjP-Ngmvhb1u1JaCUd0F3tSbgsLWrkg/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
@@ -102,7 +104,7 @@
   </section>
   <!-- Footer -->
   <footer class="bg-gray-800 py-4">
-    <div class="container mx-auto text-center text-gray-400">
+    <div class="container mx-auto text-center text-gray-400 md:text-base text-xs">
       <p>&copy; 2023 Transcribify. All rights reserved.</p>
     </div>
   </footer>
