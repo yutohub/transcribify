@@ -166,7 +166,8 @@ const videoIds = [
   "pjc_oo4ApSY", "qKBubKO-798", "RcYjXbSJBN8",
   "Rty_HFuyG4I", "t3YJ5hKiMQ0", "ycPr5-27vSI",
   "xCS76NGj3u4", "Q45sr5p_NmQ", "Df_2BBTvJ2o",
-  "wD14hb4d04c", "_EfEoSP7oYQ"
+  "wD14hb4d04c", "_EfEoSP7oYQ", "umhl2hakkcY",
+  "f4NOJ42-BKM"
 ];
 
 const thumbnailUrls = videoIds.map(id => `http://img.youtube.com/vi/${id}/mqdefault.jpg`);
