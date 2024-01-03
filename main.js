@@ -192,6 +192,7 @@ const videoIds = [
   "YXiRbRacTF0",
   "RcYjXbSJBN8",
   "Z7veiyN4LqU",
+  "Lag9Pj_33hM",
   "93yueQQnqpM",
   "pjc_oo4ApSY",
   "wD14hb4d04c",
@@ -211,6 +212,7 @@ const videoIds = [
   "rJKN_880b-M",
   "Le6c4ZaFyAE",
   "in9ubCilsT8",
+  "WsYABsWMFqc",
   "euYa4iesOm8",
   "GchC5WxeXGc",
 ];
