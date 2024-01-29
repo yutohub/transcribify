@@ -234,9 +234,9 @@ function createThumbnail(url) {
   thumbnail.src = url;
   thumbnail.classList.add("cursor-pointer", "rounded-lg", "transition-all", "duration-300");
   thumbnail.addEventListener("click", () => {
-      const videoId = extractVideoId(url);
-      // YouTubeリンクをクリップボードにコピーする代わりに、動画を埋め込んで再生する
-      embedYouTubeVideo(videoId);
+    scrollToTop();
+    const videoId = extractVideoId(url);
+    embedYouTubeVideo(videoId);
   });
   thumbnail.addEventListener("mouseenter", () => {
       thumbnail.classList.add("ring", "ring-offset-2", "ring-indigo-500");
@@ -245,6 +245,13 @@ function createThumbnail(url) {
       thumbnail.classList.remove("ring", "ring-offset-2", "ring-indigo-500");
   });
   return thumbnail;
+}
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 }
 
 function extractVideoId(url) {
