@@ -230,21 +230,21 @@ thumbnailUrls.forEach(url => {
 });
 
 function createThumbnail(url) {
-    const thumbnail = document.createElement("img");
-    thumbnail.src = url;
-    thumbnail.classList.add("cursor-pointer", "rounded-lg", "transition-all", "duration-300");
-    thumbnail.addEventListener("click", () => {
-        const videoId = extractVideoId(url);
-        const youtubeLink = `https://www.youtube.com/watch?v=${videoId}`;
-        copyToClipboard(youtubeLink);
-    });
-    thumbnail.addEventListener("mouseenter", () => {
-        thumbnail.classList.add("ring", "ring-offset-2", "ring-indigo-500");
-    });
-    thumbnail.addEventListener("mouseleave", () => {
-        thumbnail.classList.remove("ring", "ring-offset-2", "ring-indigo-500");
-    });
-    return thumbnail;
+  const thumbnail = document.createElement("img");
+  thumbnail.src = url;
+  thumbnail.classList.add("cursor-pointer", "rounded-lg", "transition-all", "duration-300");
+  thumbnail.addEventListener("click", () => {
+      const videoId = extractVideoId(url);
+      // YouTubeリンクをクリップボードにコピーする代わりに、動画を埋め込んで再生する
+      embedYouTubeVideo(videoId);
+  });
+  thumbnail.addEventListener("mouseenter", () => {
+      thumbnail.classList.add("ring", "ring-offset-2", "ring-indigo-500");
+  });
+  thumbnail.addEventListener("mouseleave", () => {
+      thumbnail.classList.remove("ring", "ring-offset-2", "ring-indigo-500");
+  });
+  return thumbnail;
 }
 
 function extractVideoId(url) {
