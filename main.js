@@ -136,9 +136,11 @@ function createThumbnail(url) {
   const thumbnail = document.createElement("img");
   thumbnail.src = url;
   thumbnail.classList.add("cursor-pointer", "rounded-lg", "transition-all", "duration-300");
-  thumbnail.addEventListener("click", () => {
+  thumbnail.addEventListener("click", async () => { // 非同期処理を追加
+    const videoId = extractVideoId(url);
+    await checkSubtitleFile(videoId); // 字幕ファイルの確認と読み込み
     scrollToTop();
-    embedYouTubeVideo(extractVideoId(url));
+    embedYouTubeVideo(videoId);
   });
   thumbnail.addEventListener("mouseenter", () => thumbnail.classList.add("ring", "ring-offset-2", "ring-indigo-500"));
   thumbnail.addEventListener("mouseleave", () => thumbnail.classList.remove("ring", "ring-offset-2", "ring-indigo-500"));
