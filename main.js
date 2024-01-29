@@ -1,5 +1,6 @@
 let player; // YouTubeプレーヤーオブジェクト
 let isPlayerReady = false; // プレーヤーの準備完了フラグ
+let currentVideoId = ''; // 現在再生中の動画ID
 let subtitles = []; // 字幕データ
 const videoIds = [
   "DY3sT4yIezs", "58rZylfxnjE", "j_AtQ6N4jQc", "uYZftCq2efg", "wQEl0GGxPcM", "54UThDl00qI",
@@ -25,6 +26,7 @@ function loadYouTubePlayerAPI(callback) {
 
 // 動画の埋め込みと再生
 function embedYouTubeVideo(videoId) {
+  currentVideoId = videoId; // 現在の動画IDを保存
   if (player) player.destroy();
   player = new YT.Player('player', {
     height: '480',
@@ -40,8 +42,7 @@ function embedYouTubeVideo(videoId) {
 // プレーヤーの準備完了時の処理
 function onPlayerReady() {
   isPlayerReady = true;
-  const videoId = getVideoIdFromUrl(document.getElementById('video-url').value);
-  checkSubtitleFile(videoId); // 字幕ファイルの存在確認
+  checkSubtitleFile(currentVideoId); // 字幕ファイルの存在確認
 }
 
 // 字幕ファイルの存在確認
