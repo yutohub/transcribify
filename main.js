@@ -85,6 +85,7 @@ window.addEventListener('DOMContentLoaded', function() {
     const playButton = document.getElementById('play-button');
     const videoUrlInput = document.getElementById('video-url');
     loadButton.addEventListener('click', function() {
+      scrollToTop();
       const videoUrl = videoUrlInput.value;
       const videoId = getVideoIdFromUrl(videoUrl);
       embedYouTubeVideo(videoId);
