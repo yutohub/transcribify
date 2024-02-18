@@ -116,6 +116,11 @@ const videoIds = [
   "DuqLkG75BE8",
   "nbPbK1xYSNY",
   "POJ1w8H8OjY",
+  "FWBnNcZv3kw",
+  "Pvk4vqescz4",
+  "LouCFKqt0rA",
+  "9xXbY1o4GfY",
+  "bHZ_nTvQOhc",
 ]; // YouTube video IDs
 
 // YouTube IFrame Player APIの読み込み
