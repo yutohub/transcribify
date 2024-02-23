@@ -207,19 +207,63 @@ function initUI() {
   document.getElementById('load-button').addEventListener('click', loadVideo);
   document.getElementById('pause-button').addEventListener('click', () => { if (isPlayerReady) player.pauseVideo(); });
   document.getElementById('play-button').addEventListener('click', () => { if (isPlayerReady) player.playVideo(); });
+  loadVideoFromUrl(); // URLから動画を読み込む
+  // 入力フィールドに入力があったときに動画を自動で読み込む
+  document.getElementById('video-url').addEventListener('input', debounce(loadVideo, 1000));
+}
+
+// 関数の実行を遅延させるためのデバウンス関数
+function debounce(func, wait) {
+  let timeout;
+  return function() {
+    const context = this, args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), wait);
+  };
+}
+
+function loadVideoFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const videoId = urlParams.get('v');
+  if (videoId) {
+    embedYouTubeVideo(videoId);
+  }
 }
 
 function loadVideo() {
   scrollToTop();
-  const videoId = getVideoIdFromUrl(document.getElementById('video-url').value);
-  embedYouTubeVideo(videoId);
-  document.getElementById('subtitle').textContent = '';
+  const videoUrl = document.getElementById('video-url').value;
+  const videoId = getVideoIdFromUrl(videoUrl);
+  if(videoId) {
+    updateUrlParameter(videoId); // URLパラメータを更新
+    embedYouTubeVideo(videoId);
+    document.getElementById('subtitle').textContent = '';
+  }
+}
+
+function updateUrlParameter(videoId) {
+  const newUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?v=${videoId}`;
+  window.history.pushState({ path: newUrl }, '', newUrl);
 }
 
 // YouTubeのURLから動画IDを取得する
 function getVideoIdFromUrl(url) {
-  const match = url.match(/[?&]v=([^&#]*)/);
-  return match ? match[1] : null;
+  // 短縮URLのパターン
+  let match = url.match(/youtu\.be\/([^?&]+)/);
+  if (match) {
+    return match[1];
+  }
+  // 通常のYouTube URLのパターン
+  match = url.match(/(?:youtube\.com.*(?:\\?|&)v=)([^&]+)/);
+  if (match) {
+    return match[1];
+  }
+  // URLがすでにVideoIDの形式であるかをチェック
+  if (/^[a-zA-Z0-9_-]{11}$/.test(url)) {
+    return url;
+  }
+  // どのパターンにも該当しない場合はnullを返す
+  return null;
 }
 
 // 再生時間表示の更新
@@ -263,11 +307,12 @@ function createThumbnail(url) {
   const thumbnail = document.createElement("img");
   thumbnail.src = url;
   thumbnail.classList.add("cursor-pointer", "rounded-lg", "transition-all", "duration-300");
-  thumbnail.addEventListener("click", async () => { // 非同期処理を追加
+  thumbnail.addEventListener("click", async () => {
     const videoId = extractVideoId(url);
     await checkSubtitleFile(videoId); // 字幕ファイルの確認と読み込み
     scrollToTop();
     embedYouTubeVideo(videoId);
+    updateUrlParameter(videoId); // クリックした動画のIDに基づいてURLパラメータを更新
   });
   thumbnail.addEventListener("mouseenter", () => thumbnail.classList.add("ring", "ring-offset-2", "ring-indigo-500"));
   thumbnail.addEventListener("mouseleave", () => thumbnail.classList.remove("ring", "ring-offset-2", "ring-indigo-500"));
