@@ -194,8 +194,6 @@ const videoIds = [
   "UiX8K-xBUpE",
   "8Q_tqwpTpVU",
   "qGyFrqc34yc",
-  "iAlwZyRUOVM",
-  "lXLBTBBil2U",
   "KJ5bFv-IRFM",
   "6gHvqXrfjuo",
   "sEFx0b9y_Xo",
@@ -217,6 +215,18 @@ const videoIds = [
   "E7MQb9Y4FAE",
   "bAUVCn_jw5I",
   "AgqZMK22LEk",
+  "lXLBTBBil2U",
+  "cEg8cOx7UZk",
+  "odEnRBszBVI",
+  "f-tFjRk4gSE",
+  "gRLrARn4TxY",
+  "jvqFAi7vkBc",
+  "iAlwZyRUOVM",
+  "5t1vTLU7s40",
+  "f_lRdkH_QoY",
+  "mAUpxN-EIgU",
+  "-ZSVkjukC1U",
+  "UlmyyYQGhzc",
 ]; // YouTube video IDs
 
 // YouTube IFrame Player APIの読み込み
